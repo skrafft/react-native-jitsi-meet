@@ -1,0 +1,287 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		96EBEF4E2115B4A500BFE51E /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96EBEF4C2115B4A400BFE51E /* WebRTC.framework */; };
+		96EBEF4F2115B4A500BFE51E /* JitsiMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96EBEF4D2115B4A500BFE51E /* JitsiMeet.framework */; };
+		96EBF0042119CADA00BFE51E /* JitsiMeetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EBF0032119CADA00BFE51E /* JitsiMeetViewController.m */; };
+		96EBF0062119CCFB00BFE51E /* RNJitsiMeetNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EBF0052119CCFB00BFE51E /* RNJitsiMeetNavigator.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		014A3B5A1C6CF33500B6D375 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		014A3B5C1C6CF33500B6D375 /* libRNJitsiMeet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNJitsiMeet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		96EBEF4C2115B4A400BFE51E /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
+		96EBEF4D2115B4A500BFE51E /* JitsiMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JitsiMeet.framework; sourceTree = "<group>"; };
+		96EBF0012119CA2500BFE51E /* JitsiMeet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JitsiMeet.storyboard; sourceTree = "<group>"; };
+		96EBF0022119CADA00BFE51E /* JitsiMeetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JitsiMeetViewController.h; sourceTree = "<group>"; };
+		96EBF0032119CADA00BFE51E /* JitsiMeetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JitsiMeetViewController.m; sourceTree = "<group>"; };
+		96EBF0052119CCFB00BFE51E /* RNJitsiMeetNavigator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNJitsiMeetNavigator.m; sourceTree = "<group>"; };
+		96EBF0072119CD7000BFE51E /* RNJitsiMeetNavigator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNJitsiMeetNavigator.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		014A3B591C6CF33500B6D375 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96EBEF4E2115B4A500BFE51E /* WebRTC.framework in Frameworks */,
+				96EBEF4F2115B4A500BFE51E /* JitsiMeet.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		014A3B531C6CF33500B6D375 = {
+			isa = PBXGroup;
+			children = (
+				96EBF0072119CD7000BFE51E /* RNJitsiMeetNavigator.h */,
+				96EBF0052119CCFB00BFE51E /* RNJitsiMeetNavigator.m */,
+				96EBF0022119CADA00BFE51E /* JitsiMeetViewController.h */,
+				96EBF0032119CADA00BFE51E /* JitsiMeetViewController.m */,
+				96EBF0012119CA2500BFE51E /* JitsiMeet.storyboard */,
+				96EBEF4D2115B4A500BFE51E /* JitsiMeet.framework */,
+				96EBEF4C2115B4A400BFE51E /* WebRTC.framework */,
+				014A3B5D1C6CF33500B6D375 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		014A3B5D1C6CF33500B6D375 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				014A3B5C1C6CF33500B6D375 /* libRNJitsiMeet.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		014A3B5B1C6CF33500B6D375 /* RNJitsiMeet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 014A3B651C6CF33500B6D375 /* Build configuration list for PBXNativeTarget "RNJitsiMeet" */;
+			buildPhases = (
+				014A3B581C6CF33500B6D375 /* Sources */,
+				014A3B591C6CF33500B6D375 /* Frameworks */,
+				014A3B5A1C6CF33500B6D375 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RNJitsiMeet;
+			productName = RNJitsiMeetSDK;
+			productReference = 014A3B5C1C6CF33500B6D375 /* libRNJitsiMeet.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		014A3B541C6CF33500B6D375 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Marc Shilling";
+				TargetAttributes = {
+					014A3B5B1C6CF33500B6D375 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 014A3B571C6CF33500B6D375 /* Build configuration list for PBXProject "RNJitsiMeet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 014A3B531C6CF33500B6D375;
+			productRefGroup = 014A3B5D1C6CF33500B6D375 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				014A3B5B1C6CF33500B6D375 /* RNJitsiMeet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		014A3B581C6CF33500B6D375 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96EBF0042119CADA00BFE51E /* JitsiMeetViewController.m in Sources */,
+				96EBF0062119CCFB00BFE51E /* RNJitsiMeetNavigator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		014A3B631C6CF33500B6D375 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		014A3B641C6CF33500B6D375 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		014A3B661C6CF33500B6D375 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../node_modules/react-native/React/**",
+					"$(SRCROOT)/../../node_modules/react-native/Libraries/**",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		014A3B671C6CF33500B6D375 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../node_modules/react-native/React/**",
+					"$(SRCROOT)/../../node_modules/react-native/Libraries/**",
+				);
+				LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		014A3B571C6CF33500B6D375 /* Build configuration list for PBXProject "RNJitsiMeet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				014A3B631C6CF33500B6D375 /* Debug */,
+				014A3B641C6CF33500B6D375 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		014A3B651C6CF33500B6D375 /* Build configuration list for PBXNativeTarget "RNJitsiMeet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				014A3B661C6CF33500B6D375 /* Debug */,
+				014A3B671C6CF33500B6D375 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 014A3B541C6CF33500B6D375 /* Project object */;
+}

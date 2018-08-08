@@ -1,0 +1,36 @@
+{
+  "name": "react-native-jitsi-meet",
+  "description": "Jitsi Meet SDK wrapper for React Native.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Sébastien Krafft",
+    "email": "skrafft@gmail.com"
+  },
+  "contributors": [
+  ],
+  "homepage": "https://github.com/skrafft/react-native-jitsi-meet",
+  "bugs": {
+    "url": "https://github.com/skrafft/react-native-jitsi-meet/issues"
+  },
+  "dependencies": {
+  },
+  "keywords": [
+    "jitsi",
+    "jitsi meet",
+    "video",
+    "chat",
+    "call",
+    "voice",
+    "native",
+    "react",
+    "react-native",
+    "react-native-component"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "nativePackage": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skrafft/react-native-jitsi-meet.git"
+  }
+}
