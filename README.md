@@ -119,13 +119,13 @@ contains `<string>voip</string>`
  <activity android:name="com.reactnativejitsimeet.JitsiMeetNavigatorActivity" />
  ```
  
-3.) In `android/settings.gradle`, include WebRTCModule
+3.) In `android/settings.gradle`, include react-native-jitsi-meet module
 ```gradle
-include ':WebRTCModule', ':app'
-project(':WebRTCModule').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-jitsi-meet/android')
+include ':react-native-jitsi-meet'
+project(':react-native-jitsi-meet').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-jitsi-meet/android')
 ```
 
-4.) In `android/app/build.gradle`, add WebRTCModule to dependencies
+4.) In `android/app/build.gradle`, add react-native-jitsi-meet to dependencies
 ```gradle
 dependencies {
   ...
