@@ -36,11 +36,11 @@ You can add listeners for the following events:
 
 ## iOS Manual Install
 ### Step 1. Add Files Into Project
-1-1.) in Xcode: Right click `Libraries` ➜ `Add Files to [project]`  
-1-2.) choose `node_modules/react-native-jitsi-meet/ios/RNJitsiMeet.xcodeproj` then `Add`  
-1-3.) add `node_modules/react-native-jitsi-meet/ios/WebRTC.framework` and `node_modules/react-native-jitsi-meet/ios/JitsiMeet.framework` to the Frameworks folder
-1-4.) add `node_modules/react-native-jitsi-meet/ios/JitsiMeet.storyboard` in the same folder as AppDelegate.m
-1-5.) Replace the following code in AppDelegate.m:
+- 1-1.) in Xcode: Right click `Libraries` ➜ `Add Files to [project]`  
+- 1-2.) choose `node_modules/react-native-jitsi-meet/ios/RNJitsiMeet.xcodeproj` then `Add`  
+- 1-3.) add `node_modules/react-native-jitsi-meet/ios/WebRTC.framework` and `node_modules/react-native-jitsi-meet/ios/JitsiMeet.framework` to the Frameworks folder
+- 1-4.) add `node_modules/react-native-jitsi-meet/ios/JitsiMeet.storyboard` in the same folder as AppDelegate.m
+- 1-5.) Replace the following code in AppDelegate.m:
 
 ```
   UIViewController *rootViewController = [UIViewController new];
