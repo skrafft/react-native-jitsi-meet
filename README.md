@@ -56,7 +56,7 @@ You can add listeners for the following events:
 ## Step 4. Link/Include Necessary Libraries
 
 4-1.) click `Build Phases` tab, open `Link Binary With Libraries`  
-4-2.) add `libRCTWebRTC.a`  
+4-2.) add `libRNJitsiMeet.a`  
 4-3.) make sure `WebRTC.framework` and `JitsiMeet.framework` linked  
 4-4.) add the following libraries:  
 
