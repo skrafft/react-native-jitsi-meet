@@ -72,10 +72,10 @@ This will create a navigation controller to be able to navigate between the Jits
 
 ## Step 4. Link/Include Necessary Libraries
 
-4-1.) click `Build Phases` tab, open `Link Binary With Libraries`  
-4-2.) add `libRNJitsiMeet.a`  
-4-3.) make sure `WebRTC.framework` and `JitsiMeet.framework` linked  
-4-4.) add the following libraries:  
+- 4-1.) click `Build Phases` tab, open `Link Binary With Libraries`  
+- 4-2.) add `libRNJitsiMeet.a`  
+- 4-3.) make sure `WebRTC.framework` and `JitsiMeet.framework` linked  
+- 4-4.) add the following libraries:  
 
 ```
 AVFoundation.framework
@@ -90,8 +90,8 @@ libsqlite3.tbd
 libstdc++.tbd
 ```
 
-4-5.) Under `Build setting` set `Dead Code Stripping` to `No`, set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`
-4-6.) Add the following script in a new "Run Script" phase in "Build Phases":
+- 4-5.) Under `Build setting` set `Dead Code Stripping` to `No`, set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`
+- 4-6.) Add the following script in a new "Run Script" phase in "Build Phases":
 
 ```
 echo "Target architectures: $ARCHS"
