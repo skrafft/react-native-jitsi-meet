@@ -168,10 +168,10 @@ contains `<string>voip</string>`
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-<permission android:name="com.reactnativejitsimeet.permission.JITSI_BROADCAST"
+<permission android:name="${applicationId}.permission.JITSI_BROADCAST"
     android:label="Jitsi Meet Event Broadcast"
     android:protectionLevel="normal"></permission>
-<uses-permission android:name="com.reactnativejitsimeet.permission.JITSI_BROADCAST"/>
+<uses-permission android:name="${applicationId}.permission.JITSI_BROADCAST"/>
 ```
 
 2.) In the `<application>` section of `android/app/src/main/AndroidManifest.xml`, add
