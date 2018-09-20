@@ -36,7 +36,7 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
       filter.addAction("CONFERENCE_WILL_JOIN");
       filter.addAction("CONFERENCE_WILL_LEAVE");
       filter.addAction("LOAD_CONFIG_ERROR");
-      context.getCurrentActivity().registerReceiver(receiver, filter, "com.reactnativejitsimeet.permission.JITSI_BROADCAST", null);
+      context.getCurrentActivity().registerReceiver(receiver, filter, context.getPackageName() + ".permission.JITSI_BROADCAST", null);
     }
 
     @ReactMethod

@@ -16,7 +16,6 @@ import org.jitsi.meet.sdk.JitsiMeetViewListener;
 
 public class JitsiMeetNavigatorActivity extends AppCompatActivity implements JitsiMeetViewListener{
     private JitsiMeetView view;
-    private String JITSI_BROADCAST = "com.reactnativejitsimeet.permission.JITSI_BROADCAST";
 
     @Override
     public void onBackPressed() {
@@ -79,7 +78,7 @@ public class JitsiMeetNavigatorActivity extends AppCompatActivity implements Jit
                 + data);
         Intent intent = new Intent(name);
         intent.putExtra("data", (HashMap<String, Object>) data);
-        sendBroadcast(intent, JITSI_BROADCAST);
+        sendBroadcast(intent, getApplication().getPackageName() + ".permission.JITSI_BROADCAST");
     }
 
     public void onConferenceFailed(Map<String, Object> data) {
