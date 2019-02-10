@@ -20,8 +20,9 @@ import com.facebook.react.bridge.ReadableMap;
 import org.jitsi.meet.sdk.JitsiMeetView;
 import org.jitsi.meet.sdk.JitsiMeetViewListener;
 import org.jitsi.meet.sdk.ReactActivityLifecycleCallbacks;
+import org.jitsi.meet.sdk.JitsiMeetActivityInterface;
 
-public class JitsiMeetNavigatorActivity extends AppCompatActivity implements JitsiMeetViewListener{
+public class JitsiMeetNavigatorActivity extends AppCompatActivity implements JitsiMeetViewListener, JitsiMeetActivityInterface {
 
     /**
      * Instance of the {@link JitsiMeetView} which this activity will display.
@@ -79,6 +80,14 @@ public class JitsiMeetNavigatorActivity extends AppCompatActivity implements Jit
             final String[] permissions,
             final int[] grantResults) {
         ReactActivityLifecycleCallbacks.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    /**
+     * Implementation of the {@code PermissionAwareActivity} interface.
+     */
+    @Override
+    public void requestPermissions(String[] permissions, int requestCode, PermissionListener listener) {
+        ReactActivityLifecycleCallbacks.requestPermissions(this, permissions, requestCode, listener);
     }
 
     @Override
