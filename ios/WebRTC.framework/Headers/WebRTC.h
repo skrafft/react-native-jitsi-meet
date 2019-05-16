@@ -1,5 +1,5 @@
 /*
-     *  Copyright 2018 The WebRTC project authors. All Rights Reserved.
+     *  Copyright 2019 The WebRTC project authors. All Rights Reserved.
      *
      *  Use of this source code is governed by a BSD-style license
      *  that can be found in the LICENSE file in the root of the source
@@ -38,8 +38,10 @@
 #import <WebRTC/RTCPeerConnection.h>
 #import <WebRTC/RTCPeerConnectionFactory.h>
 #import <WebRTC/RTCPeerConnectionFactoryOptions.h>
+#import <WebRTC/RTCRtcpParameters.h>
 #import <WebRTC/RTCRtpCodecParameters.h>
 #import <WebRTC/RTCRtpEncodingParameters.h>
+#import <WebRTC/RTCRtpHeaderExtension.h>
 #import <WebRTC/RTCRtpParameters.h>
 #import <WebRTC/RTCRtpReceiver.h>
 #import <WebRTC/RTCRtpSender.h>
@@ -63,3 +65,4 @@
 #import <WebRTC/RTCVideoEncoderVP9.h>
 #import <WebRTC/RTCCallbackLogger.h>
 #import <WebRTC/RTCFileLogger.h>
+#import <WebRTC/RTCMTLVideoView.h>

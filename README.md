@@ -28,11 +28,8 @@ In your component,
 
 You can add listeners for the following events:
 - CONFERENCE_JOINED
-- CONFERENCE_FAILED
 - CONFERENCE_LEFT
 - CONFERENCE_WILL_JOIN
-- CONFERENCE_WILL_LEAVE
-- LOAD_CONFIG_ERROR
 
 ## iOS Manual Install
 ### Step 1. Add Files Into Project

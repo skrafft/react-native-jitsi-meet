@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.modules.core.PermissionListener;
@@ -19,10 +19,11 @@ import com.facebook.react.bridge.ReadableMap;
 
 import org.jitsi.meet.sdk.JitsiMeetView;
 import org.jitsi.meet.sdk.JitsiMeetViewListener;
-import org.jitsi.meet.sdk.ReactActivityLifecycleCallbacks;
 import org.jitsi.meet.sdk.JitsiMeetActivityInterface;
+import org.jitsi.meet.sdk.JitsiMeetActivityDelegate;
+import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 
-public class JitsiMeetNavigatorActivity extends AppCompatActivity implements JitsiMeetViewListener, JitsiMeetActivityInterface {
+public class JitsiMeetNavigatorActivity extends FragmentActivity implements JitsiMeetViewListener, JitsiMeetActivityInterface {
 
     /**
      * Instance of the {@link JitsiMeetView} which this activity will display.
@@ -35,13 +36,13 @@ public class JitsiMeetNavigatorActivity extends AppCompatActivity implements Jit
             int requestCode,
             int resultCode,
             Intent data) {
-        ReactActivityLifecycleCallbacks.onActivityResult(
+        JitsiMeetActivityDelegate.onActivityResult(
                 this, requestCode, resultCode, data);
     }
 
     @Override
     public void onBackPressed() {
-        ReactActivityLifecycleCallbacks.onBackPressed();
+        JitsiMeetActivityDelegate.onBackPressed();
     }
 
     @Override
@@ -51,7 +52,10 @@ public class JitsiMeetNavigatorActivity extends AppCompatActivity implements Jit
         String url = getIntent().getStringExtra("url");
         view = new JitsiMeetView(this);
         view.setListener(this);
-        view.loadURLString(url);
+        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+            .setRoom(url)
+            .build();
+        view.join(options);
 
         setContentView(view);
     }
@@ -65,12 +69,12 @@ public class JitsiMeetNavigatorActivity extends AppCompatActivity implements Jit
             view = null;
         }
 
-        ReactActivityLifecycleCallbacks.onHostDestroy(this);
+        JitsiMeetActivityDelegate.onHostDestroy(this);
     }
 
     @Override
     public void onNewIntent(Intent intent) {
-        ReactActivityLifecycleCallbacks.onNewIntent(intent);
+        JitsiMeetActivityDelegate.onNewIntent(intent);
     }
 
     // https://developer.android.com/reference/android/support/v4/app/ActivityCompat.OnRequestPermissionsResultCallback
@@ -79,7 +83,7 @@ public class JitsiMeetNavigatorActivity extends AppCompatActivity implements Jit
             final int requestCode,
             final String[] permissions,
             final int[] grantResults) {
-        ReactActivityLifecycleCallbacks.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        JitsiMeetActivityDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     /**
@@ -87,21 +91,21 @@ public class JitsiMeetNavigatorActivity extends AppCompatActivity implements Jit
      */
     @Override
     public void requestPermissions(String[] permissions, int requestCode, PermissionListener listener) {
-        ReactActivityLifecycleCallbacks.requestPermissions(this, permissions, requestCode, listener);
+        JitsiMeetActivityDelegate.requestPermissions(this, permissions, requestCode, listener);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        ReactActivityLifecycleCallbacks.onHostResume(this);
+        JitsiMeetActivityDelegate.onHostResume(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
 
-        ReactActivityLifecycleCallbacks.onHostPause(this);
+        JitsiMeetActivityDelegate.onHostPause(this);
     }
 
     @Override
@@ -126,28 +130,16 @@ public class JitsiMeetNavigatorActivity extends AppCompatActivity implements Jit
         sendBroadcast(intent, getApplication().getPackageName() + ".permission.JITSI_BROADCAST");
     }
 
-    public void onConferenceFailed(Map<String, Object> data) {
-        on("CONFERENCE_FAILED", data);
-    }
-
     public void onConferenceJoined(Map<String, Object> data) {
         on("CONFERENCE_JOINED", data);
     }
 
-    public void onConferenceLeft(Map<String, Object> data) {
+    public void onConferenceTerminated(Map<String, Object> data) {
         this.onBackPressed();
         on("CONFERENCE_LEFT", data);
     }
 
     public void onConferenceWillJoin(Map<String, Object> data) {
         on("CONFERENCE_WILL_JOIN", data);
-    }
-
-    public void onConferenceWillLeave(Map<String, Object> data) {
-        on("CONFERENCE_WILL_LEAVE", data);
-    }
-
-    public void onLoadConfigError(Map<String, Object> data) {
-        on("LOAD_CONFIG_ERROR", data);
     }
 }
