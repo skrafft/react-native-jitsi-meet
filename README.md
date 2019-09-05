@@ -72,7 +72,7 @@ This will create a navigation controller to be able to navigate between the Jits
 - 4-1.) click `Build Phases` tab, open `Link Binary With Libraries`  
 - 4-2.) add `libRNJitsiMeet.a`  
 - 4-3.) make sure `WebRTC.framework` and `JitsiMeet.framework` linked  
-- 4-4.) add the following libraries:  
+- 4-4.) add the following libraries depending on your version of XCode, some libraries might exist or not:  
 
 ```
 AVFoundation.framework
@@ -85,6 +85,7 @@ VideoToolbox.framework
 libc.tbd
 libsqlite3.tbd
 libstdc++.tbd
+libc++.tbd
 ```
 
 - 4-5.) Under `Build setting` set `Dead Code Stripping` to `No`, set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`
@@ -156,6 +157,10 @@ contains `<string>voip</string>`
 1.) In `android/app/src/main/AndroidManifest.xml` add these permissions
 
 ```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools" // <--- Add this line if not already existing
+
+...
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-feature android:name="android.hardware.camera" />
 <uses-feature android:name="android.hardware.camera.autofocus"/>
@@ -184,6 +189,19 @@ project(':react-native-jitsi-meet').projectDir = new File(rootProject.projectDir
 
 4.) In `android/app/build.gradle`, add react-native-jitsi-meet to dependencies
 ```gradle
+android {
+  ...
+  packagingOptions {
+      pickFirst 'lib/x86/libc++_shared.so'
+      pickFirst 'lib/x86/libjsc.so'
+      pickFirst 'lib/x86_64/libjsc.so'
+      pickFirst 'lib/arm64-v8a/libjsc.so'
+      pickFirst 'lib/arm64-v8a/libc++_shared.so'
+      pickFirst 'lib/x86_64/libc++_shared.so'
+      pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+      pickFirst 'lib/armeabi-v7a/libjsc.so'
+  }
+}
 dependencies {
   ...
     implementation(project(':react-native-jitsi-meet'))
@@ -218,11 +236,13 @@ allprojects {
     }
 }
 ```
+and set your minSdkVersion to be at least 21.
 
 6.) In `android/app/src/main/java/com/xxx/MainApplication.java`
 
 ```java
 import com.reactnativejitsimeet.JitsiMeetPackage;  // <--- Add this line
+import android.support.annotation.Nullable; // <--- Add this line if not already existing
 ...
     @Override
     protected List<ReactPackage> getPackages() {
