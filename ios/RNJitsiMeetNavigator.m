@@ -53,4 +53,23 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString)
     });
 }
 
+RCT_EXPORT_METHOD(audioCall:(NSString *)urlString)
+{
+    RCTLogInfo(@"Load Audio only URL %@", urlString);
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        UIViewController* rootViewController = [[[[UIApplication sharedApplication]delegate] window] rootViewController];
+        UINavigationController *navigationController = (UINavigationController *) rootViewController;
+        [navigationController pushViewController:jitsiMeetViewController animated:true];
+        [jitsiMeetViewController setDelegate:self];
+        [jitsiMeetViewController loadAudioUrl:urlString];
+    });
+}
+
+RCT_EXPORT_METHOD(endCall)
+{
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [jitsiMeetViewController endCall];
+    });
+}
+
 @end

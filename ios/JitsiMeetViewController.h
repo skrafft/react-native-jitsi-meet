@@ -13,6 +13,9 @@
 
 - (void) setDelegate:(id<JitsiMeetViewDelegate>) delegate;
 - (void)loadUrl:(NSString *) url;
+- (void)loadAudioUrl:(NSString *) url;
+- (void)endCall;
+
 
 @end
 
