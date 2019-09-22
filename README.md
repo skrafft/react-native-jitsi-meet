@@ -5,7 +5,64 @@ React native wrapper for Jitsi Meet SDK
 
 `npm install react-native-jitsi-meet --save` 
 
-## Use
+## Use (>= 2.0.0)
+
+The following component is an example of use:
+
+```
+import React from 'react';
+import { View } from 'react-native';
+import JitsiMeet, { JitsiMeetView } from 'react-native-jitsi-meet';
+
+class VideoCall extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onConferenceTerminated = this.onConferenceTerminated.bind(this);
+    this.onConferenceJoined = this.onConferenceJoined.bind(this);
+    this.onConferenceWillJoin = this.onConferenceWillJoin.bind(this);
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      const url = self.props.navigation.getParam('url');
+      JitsiMeet.call(url);
+      /* You can also use JitsiMeet.audioCall(url) for audio only call */
+      /* You can programmatically end the call with JitsiMeet.endCall() */
+    }, 1000);
+  }
+
+  onConferenceTerminated(nativeEvent) {
+    /* Conference terminated event */
+  }
+
+  onConferenceJoined(nativeEvent) {
+    /* Conference joined event */
+  }
+
+  onConferenceWillJoin(nativeEvent) {
+    /* Conference will join event */
+  }
+
+  render() {
+    return (
+      <View style={{ backgroundColor: 'black' }}>
+        <JitsiMeetView onConferenceTerminated={this.onConferenceTerminated} onConferenceJoined={this.onConferenceJoined} onConferenceWillJoin={this.onConferenceWillJoin} style={{ flex: 1, height: '100%', width: '100%' }} />
+      </View>
+    );
+  }
+}
+
+export default VideoCall;
+```
+### Events
+
+You can add listeners for the following events:
+- onConferenceJoined
+- onConferenceTerminated
+- onConferenceWillJoin
+
+
+## Use (< 2.0.0 and RN<0.60)
 
 In your component, 
 
@@ -31,7 +88,7 @@ You can add listeners for the following events:
 - CONFERENCE_LEFT
 - CONFERENCE_WILL_JOIN
 
-## iOS Manual Install
+## iOS Manual Install (deprecated for RN >= 0.60)
 ### Step 1. Add Files Into Project
 - 1-1.) in Xcode: Right click `Libraries` ➜ `Add Files to [project]`  
 - 1-2.) choose `node_modules/react-native-jitsi-meet/ios/RNJitsiMeet.xcodeproj` then `Add`  
@@ -152,7 +209,7 @@ This will run a script everytime you build to clean the unwanted architecture
 ```
 contains `<string>voip</string>`
 
-## Android Manual Install
+## Android Manual Install (deprecated for RN >= 0.60)
 
 1.) In `android/app/src/main/AndroidManifest.xml` add these permissions
 

@@ -45,9 +45,7 @@ repositories {
 }
 
 dependencies {
-    //resolutionStrategy.force "org.webkit:android-jsc:r224109"
-    implementation ('org.jitsi.react:jitsi-meet-sdk:2.1.0') {
+    implementation ('org.jitsi.react:jitsi-meet-sdk:2.3.0') {
       transitive = true
-      //compile ("org.webkit:android-jsc:r224109") { force = true }
     }
 }
