@@ -5,6 +5,20 @@ React native wrapper for Jitsi Meet SDK
 
 `npm install react-native-jitsi-meet --save` 
 
+For versions higher than 2.0.0, you need to add the following piece of code in your ```metro.config.js``` file to avoid conflicts between react-native-jitsi-meet and react-native in metro bundler.
+
+```
+const blacklist = require('metro-config/src/defaults/blacklist');
+
+module.exports = {
+  resolver: {
+    blacklistRE: blacklist([
+      /ios\/Pods\/JitsiMeetSDK\/Frameworks\/JitsiMeet.framework\/assets\/node_modules\/react-native\/.*/,
+    ]),
+  },
+};
+```
+
 ## Use (>= 2.0.0)
 
 The following component is an example of use:
