@@ -19,6 +19,8 @@ module.exports = {
 };
 ```
 
+For iOS, you'll need to modify your Podfile to have ```platform :ios, '10.0'``` and execute ```pod install```
+
 ## Use (>= 2.0.0)
 
 The following component is an example of use:
@@ -102,6 +104,25 @@ You can add listeners for the following events:
 - CONFERENCE_LEFT
 - CONFERENCE_WILL_JOIN
 
+## iOS Configuration
+
+1.) navigate to `<ProjectFolder>/ios/<ProjectName>/`  
+2.) edit `Info.plist` and add the following lines
+
+```
+<key>NSCameraUsageDescription</key>
+<string>Camera Permission</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>Microphone Permission</string>
+```
+3.) in `Info.plist`, make sure that 
+```
+<key>UIBackgroundModes</key>
+<array>
+</array>
+```
+contains `<string>voip</string>`
+
 ## iOS Manual Install (deprecated for RN >= 0.60)
 ### Step 1. Add Files Into Project
 - 1-1.) in Xcode: Right click `Libraries` ➜ `Add Files to [project]`  
@@ -132,13 +153,13 @@ This will create a navigation controller to be able to navigate between the Jits
 2-2.) edit BOTH `Framework Search Paths` and `Library Search Paths`  
 2-3.) add path on BOTH sections with: `$(SRCROOT)/../node_modules/react-native-jitsi-meet/ios` with `recursive`  
 
-## Step 3. Change General Setting and Embed Framework
+### Step 3. Change General Setting and Embed Framework
 
 3-1.) go to `General` tab  
 3-2.) change `Deployment Target` to `8.0`  
 3-3.) add `WebRTC.framework` and `JitsiMeet.framework` in `Embedded Binaries` 
 
-## Step 4. Link/Include Necessary Libraries
+### Step 4. Link/Include Necessary Libraries
 
 - 4-1.) click `Build Phases` tab, open `Link Binary With Libraries`  
 - 4-2.) add `libRNJitsiMeet.a`  
@@ -203,25 +224,6 @@ echo $
 done
 ```
 This will run a script everytime you build to clean the unwanted architecture
-
-## Step 5. Add Permissions
-
-5-1.) navigate to `<ProjectFolder>/ios/<ProjectName>/`  
-5-2.) edit `Info.plist` and add the following lines
-
-```
-<key>NSCameraUsageDescription</key>
-<string>Camera Permission</string>
-<key>NSMicrophoneUsageDescription</key>
-<string>Microphone Permission</string>
-```
-5-3.) in `Info.plist`, make sure that 
-```
-<key>UIBackgroundModes</key>
-<array>
-</array>
-```
-contains `<string>voip</string>`
 
 ## Android Manual Install (deprecated for RN >= 0.60)
 
