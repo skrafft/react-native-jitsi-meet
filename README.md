@@ -60,7 +60,7 @@ class VideoCall extends React.Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: 'black' }}>
+      <View style={{ backgroundColor: 'black',flex: 1 }}>
         <JitsiMeetView onConferenceTerminated={this.onConferenceTerminated} onConferenceJoined={this.onConferenceJoined} onConferenceWillJoin={this.onConferenceWillJoin} style={{ flex: 1, height: '100%', width: '100%' }} />
       </View>
     );
