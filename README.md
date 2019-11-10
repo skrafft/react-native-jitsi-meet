@@ -241,6 +241,8 @@ project.ext.react = [
 2.) In `android/app/src/main/java/com/xxx/MainApplication.java` add/replace the following methods:
 
 ```
+  import androidx.annotation.Nullable; // <--- Add this line if not already existing
+  ...
     @Override
     protected String getJSMainModuleName() {
       return "index";
