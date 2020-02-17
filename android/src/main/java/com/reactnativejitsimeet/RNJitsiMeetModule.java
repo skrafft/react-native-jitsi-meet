@@ -1,12 +1,15 @@
 package com.reactnativejitsimeet;
 
 import android.util.Log;
+import java.net.URL;
+import java.net.MalformedURLException;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.UiThreadUtil;
 import com.facebook.react.module.annotations.ReactModule;
+import com.facebook.react.bridge.ReadableMap;
 
 @ReactModule(name = RNJitsiMeetModule.MODULE_NAME)
 public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
@@ -29,14 +32,31 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void call(String url) {
+    public void call(String url, ReadableMap userInfo) {
         UiThreadUtil.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (mJitsiMeetViewReference.getJitsiMeetView() != null) {
+                    RNJitsiMeetUserInfo _userInfo = new RNJitsiMeetUserInfo();
+                    if (userInfo != null) {
+                        if (userInfo.hasKey("displayName")) {
+                            _userInfo.setDisplayName(userInfo.getString("displayName"));
+                          }
+                          if (userInfo.hasKey("email")) {
+                            _userInfo.setEmail(userInfo.getString("email"));
+                          }
+                          if (userInfo.hasKey("avatar")) {
+                            String avatarURL = userInfo.getString("avatar");
+                            try {
+                                _userInfo.setAvatar(new URL(avatarURL));
+                            } catch (MalformedURLException e) {
+                            }
+                          }
+                    }
                     RNJitsiMeetConferenceOptions options = new RNJitsiMeetConferenceOptions.Builder()
                             .setRoom(url)
                             .setAudioOnly(false)
+                            .setUserInfo(_userInfo)
                             .build();
                     mJitsiMeetViewReference.getJitsiMeetView().join(options);
                 }
@@ -45,14 +65,31 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void audioCall(String url) {
+    public void audioCall(String url, ReadableMap userInfo) {
         UiThreadUtil.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (mJitsiMeetViewReference.getJitsiMeetView() != null) {
+                    RNJitsiMeetUserInfo _userInfo = new RNJitsiMeetUserInfo();
+                    if (userInfo != null) {
+                        if (userInfo.hasKey("displayName")) {
+                            _userInfo.setDisplayName(userInfo.getString("displayName"));
+                          }
+                          if (userInfo.hasKey("email")) {
+                            _userInfo.setEmail(userInfo.getString("email"));
+                          }
+                          if (userInfo.hasKey("avatar")) {
+                            String avatarURL = userInfo.getString("avatar");
+                            try {
+                                _userInfo.setAvatar(new URL(avatarURL));
+                            } catch (MalformedURLException e) {
+                            }
+                          }
+                    }
                     RNJitsiMeetConferenceOptions options = new RNJitsiMeetConferenceOptions.Builder()
                             .setRoom(url)
                             .setAudioOnly(true)
+                            .setUserInfo(_userInfo)
                             .build();
                     mJitsiMeetViewReference.getJitsiMeetView().join(options);
                 }

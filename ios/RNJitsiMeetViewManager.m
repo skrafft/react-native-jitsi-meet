@@ -1,5 +1,6 @@
 #import "RNJitsiMeetViewManager.h"
 #import "RNJitsiMeetView.h"
+#import <JitsiMeet/JitsiMeetUserInfo.h>
 
 @implementation RNJitsiMeetViewManager{
     RNJitsiMeetView *jitsiMeetView;
@@ -23,23 +24,49 @@ RCT_EXPORT_METHOD(initialize)
     RCTLogInfo(@"Initialize is deprecated in v2");
 }
 
-RCT_EXPORT_METHOD(call:(NSString *)urlString)
+RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo)
 {
     RCTLogInfo(@"Load URL %@", urlString);
+    JitsiMeetUserInfo * _userInfo = [[JitsiMeetUserInfo alloc] init];
+    if (userInfo != NULL) {
+      if (userInfo[@"displayName"] != NULL) {
+        _userInfo.displayName = userInfo[@"displayName"];
+      }
+      if (userInfo[@"email"] != NULL) {
+        _userInfo.email = userInfo[@"email"];
+      }
+      if (userInfo[@"avatar"] != NULL) {
+        _userInfo.avatar = userInfo[@"avatar"];
+      }
+    }
     dispatch_sync(dispatch_get_main_queue(), ^{
         JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {        
             builder.room = urlString;
+            builder.userInfo = _userInfo;
         }];
         [jitsiMeetView join:options];
     });
 }
 
-RCT_EXPORT_METHOD(audioCall:(NSString *)urlString)
+RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userInfo)
 {
     RCTLogInfo(@"Load Audio only URL %@", urlString);
+    JitsiMeetUserInfo * _userInfo = [[JitsiMeetUserInfo alloc] init];
+    if (userInfo != NULL) {
+      if (userInfo[@"displayName"] != NULL) {
+        _userInfo.displayName = userInfo[@"displayName"];
+      }
+      if (userInfo[@"email"] != NULL) {
+        _userInfo.email = userInfo[@"email"];
+      }
+      if (userInfo[@"avatar"] != NULL) {
+        _userInfo.avatar = userInfo[@"avatar"];
+      }
+    }
     dispatch_sync(dispatch_get_main_queue(), ^{
         JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {        
             builder.room = urlString;
+            builder.userInfo = _userInfo;
             builder.audioOnly = YES;
         }];
         [jitsiMeetView join:options];
