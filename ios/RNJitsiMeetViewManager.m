@@ -36,7 +36,8 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo)
         _userInfo.email = userInfo[@"email"];
       }
       if (userInfo[@"avatar"] != NULL) {
-        _userInfo.avatar = userInfo[@"avatar"];
+        NSURL *url = [NSURL URLWithString:[userInfo[@"avatar"] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+        _userInfo.avatar = url;
       }
     }
     dispatch_sync(dispatch_get_main_queue(), ^{
@@ -60,7 +61,8 @@ RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userI
         _userInfo.email = userInfo[@"email"];
       }
       if (userInfo[@"avatar"] != NULL) {
-        _userInfo.avatar = userInfo[@"avatar"];
+        NSURL *url = [NSURL URLWithString:[userInfo[@"avatar"] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+        _userInfo.avatar = url;
       }
     }
     dispatch_sync(dispatch_get_main_queue(), ^{
