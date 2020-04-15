@@ -332,7 +332,7 @@ dependencies {
 }
 ```
 
-and set your minSdkVersion to be at least 21.
+and set your minSdkVersion to be at least 24.
 
 5.) In `android/app/src/main/java/com/xxx/MainApplication.java`
 
