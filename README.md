@@ -20,6 +20,9 @@ module.exports = {
 };
 ```
 
+Although most of the process is automated, you still have to follow the platform install guide below ([iOS](#ios-install-for-rn--060) and [Android](#android-install)) to get this library to work.
+
+
 ## Use (>= 2.0.0)
 
 The following component is an example of use:
@@ -39,7 +42,7 @@ class VideoCall extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {
-      const url = self.props.navigation.getParam('url');
+      const url = 'https://your.jitsi.server/roomName'; // can also be only room name and will connect to jitsi meet servers
       const userInfo = { displayName: 'User', email: 'user@example.com', avatar: 'https:/gravatar.com/avatar/abc123' };
       JitsiMeet.call(url, userInfo);
       /* You can also use JitsiMeet.audioCall(url) for audio only call */
@@ -70,6 +73,9 @@ class VideoCall extends React.Component {
 
 export default VideoCall;
 ```
+
+You can also check the [ExampleApp](https://github.com/skrafft/react-native-jitsi-meet/tree/master/ExampleApp)
+
 ### Events
 
 You can add listeners for the following events:
@@ -123,11 +129,11 @@ You can add listeners for the following events:
 ```
 contains `<string>voip</string>`
 
-## iOS Manual Install for RN >= 0.60
+## iOS Install for RN >= 0.60
 1.) Modify your Podfile to have ```platform :ios, '10.0'``` and execute ```pod install```  
 2.) In Xcode, under Build setting set Enable Bitcode to No  
 
-## iOS Manual Install for RN < 0.60
+## iOS Install for RN < 0.60
 ### Step 1. Add Files Into Project
 - 1-1.) in Xcode: Right click `Libraries` ➜ `Add Files to [project]`  
 - 1-2.) choose `node_modules/react-native-jitsi-meet/ios/RNJitsiMeet.xcodeproj` then `Add`  
@@ -229,7 +235,7 @@ done
 ```
 This will run a script everytime you build to clean the unwanted architecture
 
-## Android Manual Install
+## Android Install
 1.) In `android/app/build.gradle`, add/replace the following lines:
 
 ```
@@ -276,7 +282,7 @@ allprojects {
 }
 ```
 
-## Android Additional Manual Install for RN < 0.60
+## Android Additional Install for RN < 0.60
 
 1.) In `android/app/src/main/AndroidManifest.xml` add these permissions
 
