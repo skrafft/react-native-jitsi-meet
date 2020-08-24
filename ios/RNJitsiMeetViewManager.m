@@ -120,4 +120,23 @@ RCT_EXPORT_METHOD(endCall)
     jitsiMeetView.onEnteredPip(data);
 }
 
+- (void)participantJoined:(NSDictionary *)data {
+    RCTLogInfo(@"Participant joined");
+    if (!jitsiMeetView.participantJoined) {
+        return;
+    }
+
+    jitsiMeetView.participantJoined(data);
+}
+
+- (void)participantLeft:(NSDictionary *)data {
+    RCTLogInfo(@"Participant joined");
+    if (!jitsiMeetView.participantLeft) {
+        return;
+    }
+
+    jitsiMeetView.participantLeft(data);
+}
+
+
 @end
