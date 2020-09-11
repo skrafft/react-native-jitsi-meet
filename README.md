@@ -343,14 +343,14 @@ and set your minSdkVersion to be at least 24.
 5.) In `android/app/src/main/java/com/xxx/MainApplication.java`
 
 ```java
-import com.reactnativejitsimeet.JitsiMeetPackage;  // <--- Add this line
+import com.reactnativejitsimeet.RNJitsiMeetPackage;  // <--- Add this line
 import android.support.annotation.Nullable; // <--- Add this line if not already existing
 ...
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
         new MainReactPackage(),
-        new JitsiMeetPackage()                  // <--- Add this line
+        new RNJitsiMeetPackage()                  // <--- Add this line
       );
     }
 ```
