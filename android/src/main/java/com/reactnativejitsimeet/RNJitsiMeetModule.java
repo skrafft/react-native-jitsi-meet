@@ -56,8 +56,6 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                     RNJitsiMeetConferenceOptions options = new RNJitsiMeetConferenceOptions.Builder()
                             .setRoom(url)
                             .setAudioOnly(false)
-                            .setUserInfo(_userInfo)
-                            .setUserInfo(_userInfo)
                             .setFeatureFlag("invite.enabled", false)
                             .setFeatureFlag("close-captions.enabled", false)
                             .setFeatureFlag("raise-hand.enabled", false)
@@ -68,6 +66,7 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                             .setFeatureFlag("live-streaming.enabled", false)
                             .setFeatureFlag("meeting-name.enabled", false)
                             .setFeatureFlag("tile-view.enabled", false)
+                            .setUserInfo(_userInfo)
                             .build();
                     mJitsiMeetViewReference.getJitsiMeetView().join(options);
                 }
@@ -100,7 +99,6 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                     RNJitsiMeetConferenceOptions options = new RNJitsiMeetConferenceOptions.Builder()
                             .setRoom(url)
                             .setAudioOnly(true)
-                            .setUserInfo(_userInfo)
                             .setFeatureFlag("invite.enabled", false)
                             .setFeatureFlag("close-captions.enabled", false)
                             .setFeatureFlag("raise-hand.enabled", false)
@@ -111,6 +109,7 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                             .setFeatureFlag("live-streaming.enabled", false)
                             .setFeatureFlag("meeting-name.enabled", false)
                             .setFeatureFlag("tile-view.enabled", false)
+                            .setUserInfo(_userInfo)
                             .build();
                     mJitsiMeetViewReference.getJitsiMeetView().join(options);
                 }
