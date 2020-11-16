@@ -90,6 +90,16 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                             .setRoom(url)
                             .setAudioOnly(true)
                             .setUserInfo(_userInfo)
+                            .setFeatureFlag("invite.enabled", false)
+                            .setFeatureFlag("close-captions.enabled", false)
+                            .setFeatureFlag("raise-hand.enabled", false)
+                            .setFeatureFlag("meeting-password.enabled", false)
+                            .setFeatureFlag("recording.enabled", false)
+                            .setFeatureFlag("toolbox.alwaysVisible", false)
+                            .setFeatureFlag("ios.recording.enabled", false)
+                            .setFeatureFlag("live-streaming.enabled", false)
+                            .setFeatureFlag("meeting-name.enabled", false)
+                            .setFeatureFlag("tile-view.enabled", false)
                             .build();
                     mJitsiMeetViewReference.getJitsiMeetView().join(options);
                 }
