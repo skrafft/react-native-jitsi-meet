@@ -44,6 +44,16 @@ RCT_EXPORT_METHOD(call:(NSString *)urlString userInfo:(NSDictionary *)userInfo)
         JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {
             builder.room = urlString;
             builder.userInfo = _userInfo;
+            [builder setFeatureFlag:@"invite.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"close-captions.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"raise-hand.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"meeting-password.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"recording.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"toolbox.alwaysVisible" withBoolean:NO];
+            [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"live-streaming.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"meeting-name.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"tile-view.enabled" withBoolean:NO];
         }];
         [jitsiMeetView join:options];
     });
