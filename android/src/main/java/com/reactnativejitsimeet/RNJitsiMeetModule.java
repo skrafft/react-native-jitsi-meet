@@ -68,7 +68,6 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                             .setFeatureFlag("meeting-name.enabled", false)
                             .setFeatureFlag("tile-view.enabled", false)
                             .setFeatureFlag("welcomepage.enabled", false)
-                            .setFeatureFlag("pip.enabled", false)
                             .setUserInfo(_userInfo)
                             .build();
                     mJitsiMeetViewReference.getJitsiMeetView().join(options);
