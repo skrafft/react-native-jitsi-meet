@@ -67,6 +67,8 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                             .setFeatureFlag("live-streaming.enabled", false)
                             .setFeatureFlag("meeting-name.enabled", false)
                             .setFeatureFlag("tile-view.enabled", false)
+                            .setFeatureFlag("welcomepage.enabled", false)
+                            .setFeatureFlag("pip.enabled", false)
                             .setUserInfo(_userInfo)
                             .build();
                     mJitsiMeetViewReference.getJitsiMeetView().join(options);

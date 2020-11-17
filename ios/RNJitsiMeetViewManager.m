@@ -90,6 +90,8 @@ RCT_EXPORT_METHOD(audioCall:(NSString *)urlString userInfo:(NSDictionary *)userI
             [builder setFeatureFlag:@"live-streaming.enabled" withBoolean:NO];
             [builder setFeatureFlag:@"meeting-name.enabled" withBoolean:NO];
             [builder setFeatureFlag:@"tile-view.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"pip.enabled" withBoolean:NO];
+            [builder setFeatureFlag:@"welcomepage.enabled" withBoolean:NO];
         }];
         [jitsiMeetView join:options];
     });
