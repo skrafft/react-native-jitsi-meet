@@ -364,5 +364,15 @@ If your app already includes `react-native-locale-detector` or `react-native-vec
     implementation(project(':react-native-jitsi-meet')) {
       exclude group: 'com.facebook.react',module:'react-native-locale-detector'
       exclude group: 'com.facebook.react',module:'react-native-vector-icons'
+      // Un-comment below if using hermes
+      //exclude group: 'com.facebook',module:'hermes'
+      // Un-comment any packages below that you have added to your project to prevent `duplicate_classes` errors
+      //exclude group: 'com.facebook.react',module:'react-native-community-async-storage'
+      //exclude group: 'com.facebook.react',module:'react-native-community_netinfo'
+      //exclude group: 'com.facebook.react',module:'react-native-svg'
+      //exclude group: 'com.facebook.react',module:'react-native-fetch-blob'
+      //exclude group: 'com.facebook.react',module:'react-native-webview'
+      //exclude group: 'com.facebook.react',module:'react-native-linear-gradient'
+      //exclude group: 'com.facebook.react',module:'react-native-sound'
     }
 ```
