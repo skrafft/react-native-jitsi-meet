@@ -45,7 +45,7 @@ repositories {
 }
 
 dependencies {
-    implementation ('org.jitsi.react:jitsi-meet-sdk:2.6.0') {
+    implementation ('org.jitsi.react:jitsi-meet-sdk:3.1.0') {
       transitive = true
     }
 }
