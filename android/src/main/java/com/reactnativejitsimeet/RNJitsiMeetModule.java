@@ -57,6 +57,7 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                             .setRoom(url)
                             .setAudioOnly(false)
                             .setVideoMuted(true)
+                            .setting(false)
                             .setUserInfo(_userInfo)
                             .build();
                     mJitsiMeetViewReference.getJitsiMeetView().join(options);
