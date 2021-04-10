@@ -38,7 +38,11 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
             public void run() {
                 if (mJitsiMeetViewReference.getJitsiMeetView() != null) {
                     RNJitsiMeetUserInfo _userInfo = new RNJitsiMeetUserInfo();
-                    if (userInfo != null) {
+
+                    if(mJitsiMeetViewReference.getJitsiMeetView() == null) {
+                        call(url, userInfo);
+                    }
+                    else {
                         if (userInfo.hasKey("displayName")) {
                             _userInfo.setDisplayName(userInfo.getString("displayName"));
                           }
