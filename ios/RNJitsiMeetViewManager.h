@@ -1,5 +1,5 @@
 #import <React/RCTViewManager.h>
-#import <JitsiMeet/JitsiMeetViewDelegate.h>
+@import JitsiMeetSDK;
 
 @interface RNJitsiMeetViewManager : RCTViewManager <JitsiMeetViewDelegate>
 @end

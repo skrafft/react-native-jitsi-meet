@@ -1,6 +1,6 @@
 #import "RNJitsiMeetViewManager.h"
 #import "RNJitsiMeetView.h"
-#import <JitsiMeet/JitsiMeetUserInfo.h>
+#import <JitsiMeetSDK/JitsiMeetUserInfo.h>
 
 @implementation RNJitsiMeetViewManager{
     RNJitsiMeetView *jitsiMeetView;

@@ -1,6 +1,6 @@
-#import <JitsiMeet/JitsiMeet.h>
-
 #import <React/RCTComponent.h>
+
+@import JitsiMeetSDK;
 
 @interface RNJitsiMeetView : JitsiMeetView
 @property (nonatomic, copy) RCTBubblingEventBlock onConferenceJoined;
