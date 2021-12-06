@@ -65,7 +65,7 @@ const VideoCall = () => {
 export default VideoCall;
 ```
 
-You can also check the [ExampleApp](https://github.com/skrafft/react-native-jitsi-meet/tree/master/ExampleApp)
+You can also check the [ExampleApp](https://github.com/RidaRidss/react-native-jitsi-meet/tree/master/ExampleApp)
 
 ### Events
 
