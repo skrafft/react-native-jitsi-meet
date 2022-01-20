@@ -1,6 +1,10 @@
 # react-native-jitsi-meet
 React native wrapper for Jitsi Meet SDK
 
+## Important notice
+
+Jitsi Meet SDK is a packed React Native SDK. Running react-native-jitsi-meet will run this React Native SDK inside your React Native app. We know that this is suboptimal but sadly we did not find any other solution without massive rewrite of Jitsi Meet SDK. Compatibility with other libraries used internally by Jitsi Meet SDK might be broken (version mismatch) or you might experience performance issues or touch issues in some edge cases.
+
 ## Install
 
 `npm install react-native-jitsi-meet --save` 
