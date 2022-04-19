@@ -5,16 +5,16 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.1.2'
+    classpath 'com.android.tools.build:gradle:4.1.3'
   }
 }
 
 apply plugin: 'com.android.library'
 
-def DEFAULT_COMPILE_SDK_VERSION = 26
-def DEFAULT_BUILD_TOOLS_VERSION = "27.0.3"
-def DEFAULT_TARGET_SDK_VERSION  = 22
-def DEFAULT_MIN_SDK_VERSION     = 17
+def DEFAULT_COMPILE_SDK_VERSION = 31
+def DEFAULT_BUILD_TOOLS_VERSION = "29.0.3"
+def DEFAULT_TARGET_SDK_VERSION  = 31
+def DEFAULT_MIN_SDK_VERSION     = 24
 
 android {
   compileSdkVersion rootProject.hasProperty('compileSdkVersion') ? rootProject.compileSdkVersion : DEFAULT_COMPILE_SDK_VERSION
@@ -41,11 +41,12 @@ repositories {
   }
   google()
   mavenCentral()
+  maven { url "https://jitpack.io" }
   jcenter()
 }
 
 dependencies {
-    implementation ('org.jitsi.react:jitsi-meet-sdk:3.7.0') {
+    implementation ('org.jitsi.react:jitsi-meet-sdk:5.0.2') {
       transitive = true
     }
 }
