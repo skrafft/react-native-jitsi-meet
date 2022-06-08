@@ -1,0 +1,2 @@
+//include ':jitsi-meet-sdk'
+//project(':jitsi-meet-sdk').projectDir = new File('')

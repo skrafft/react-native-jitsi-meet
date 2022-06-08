@@ -42,7 +42,8 @@ allprojects {
         }
 
         maven { // <---- Add this block
-            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+//            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+            url "https://github.com/softhouse-gr/jitsi-maven-repository/raw/main/releases"
         }
         mavenCentral {
             // We don't want to fetch react-native from Maven Central as there are

@@ -133,6 +133,9 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
+    packagingOptions {
+        exclude 'META-INF/react-native-webview_release.kotlin_module'
+    }
 
     defaultConfig {
         applicationId "com.example68"

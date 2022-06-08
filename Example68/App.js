@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import JitsiMeet, {JitsiMeetView} from "react-native-jitsi-meet";
-// import JitsiMeet, {JitsiMeetView} from 'react-native-jitsi-meet';
-
+import { UIManager } from 'react-native';
 function App() {
+  // UIManager.playTouchSound = () => { }
+
   let options = {
     audioMuted: false,
     audioOnly: false,
