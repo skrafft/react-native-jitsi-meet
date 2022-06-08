@@ -1,14 +1,10 @@
 import React, {useEffect} from 'react';
-import JitsiMeet, {JitsiMeetView} from "react-native-jitsi-meet";
-import { UIManager } from 'react-native';
+import JitsiMeet, {JitsiMeetView} from 'react-native-jitsi-meet';
+import {UIManager} from 'react-native';
 function App() {
   // UIManager.playTouchSound = () => { }
 
-  let options = {
-    audioMuted: false,
-    audioOnly: false,
-    videoMuted: false,
-  };
+  let options = {};
   const meetFeatureFlags = {
     addPeopleEnabled: true,
     calendarEnabled: true,
@@ -33,24 +29,17 @@ function App() {
     welcomePageEnabled: false,
   };
   useEffect(() => {
-    setTimeout(() => {
-      const url = 'https://meet.jit.si/exemple';
-      const userInfo = {
-        displayName: 'User',
-        email: 'user@example.com',
-        avatar: 'https:/gravatar.com/avatar/abc123',
-      };
-      JitsiMeet.call(url, userInfo, options, meetFeatureFlags);
-      /* Você também pode usar o JitsiMeet.audioCall (url) para chamadas apenas de áudio */
-      /* Você pode terminar programaticamente a chamada com JitsiMeet.endCall () */
-    }, 1000);
-  }, []);
-
-  useEffect(() => {
+    const url = 'https://vchat.scholars-home.org/myc';
+    const userInfo = {
+      displayName: 'User',
+      email: 'user@example.com',
+      avatar: 'https:/gravatar.com/avatar/abc123',
+    };
+    JitsiMeet.call(url, userInfo, options, meetFeatureFlags);
     return () => {
       JitsiMeet.endCall();
     };
-  });
+  }, []);
 
   function onConferenceTerminated(nativeEvent) {
     /* Conference terminated event */
