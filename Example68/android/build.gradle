@@ -7,7 +7,7 @@ buildscript {
         buildToolsVersion = "31.0.0"
         minSdkVersion = 23
         compileSdkVersion = 31
-        targetSdkVersion = 30
+        targetSdkVersion = 31
 
         if (System.properties['os.arch'] == "aarch64") {
             // For M1 Users we need to use the NDK 24 which added support for aarch64
@@ -42,8 +42,8 @@ allprojects {
         }
 
         maven { // <---- Add this block
-//            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
-            url "https://github.com/softhouse-gr/jitsi-maven-repository/raw/main/releases"
+            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+//            url "https://github.com/softhouse-gr/jitsi-maven-repository/raw/main/releases"
         }
         mavenCentral {
             // We don't want to fetch react-native from Maven Central as there are
@@ -52,6 +52,7 @@ allprojects {
                 excludeGroup "com.facebook.react"
             }
         }
+        mavenCentral()
         google()
         maven { url 'https://www.jitpack.io' }
     }
