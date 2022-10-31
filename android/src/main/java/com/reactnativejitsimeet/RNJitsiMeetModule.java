@@ -74,7 +74,7 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                         .setFeatureFlag("pip.enabled", meetFeatureFlags.hasKey("pipEnabled") ?meetFeatureFlags.getBoolean("pipEnabled") : true)
                         .setFeatureFlag("kick-out.enabled", meetFeatureFlags.hasKey("kickOutEnabled") ?meetFeatureFlags.getBoolean("kickOutEnabled") : true)
                         .setFeatureFlag("conference-timer.enabled", meetFeatureFlags.hasKey("conferenceTimerEnabled") ?meetFeatureFlags.getBoolean("conferenceTimerEnabled") : true)
-                        .setFeatureFlag("video-share.enabled", meetFeatureFlags.hasKey("videoShareButtonEnabled") ?meetFeatureFlags.getBoolean("videoShareButtonEnabled") : true)
+                        .setFeatureFlag("video-share.enabled", meetFeatureFlags.hasKey("videoShareEnabled") ?meetFeatureFlags.getBoolean("videoShareEnabled") : true)
                         .setFeatureFlag("recording.enabled", meetFeatureFlags.hasKey("recordingEnabled") ?meetFeatureFlags.getBoolean("recordingEnabled") : true)
                         .setFeatureFlag("reactions.enabled", meetFeatureFlags.hasKey("reactionsEnabled") ?meetFeatureFlags.getBoolean("reactionsEnabled") : true)
                         .setFeatureFlag("raise-hand.enabled", meetFeatureFlags.hasKey("raiseHandEnabled") ?meetFeatureFlags.getBoolean("raiseHandEnabled") : true)
@@ -82,6 +82,7 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
                         .setFeatureFlag("toolbox.alwaysVisible", meetFeatureFlags.hasKey("toolboxAlwaysVisible") ?meetFeatureFlags.getBoolean("toolboxAlwaysVisible") : false)
                         .setFeatureFlag("toolbox.enabled", meetFeatureFlags.hasKey("toolboxEnabled") ?meetFeatureFlags.getBoolean("toolboxEnabled") : true)
                         .setFeatureFlag("welcomepage.enabled", meetFeatureFlags.hasKey("welcomePageEnabled") ?meetFeatureFlags.getBoolean("welcomePageEnabled") : false)
+                        .setFeatureFlag("prejoinpage.enabled", meetFeatureFlags.hasKey("prejoinPageEnabled") ?meetFeatureFlags.getBoolean("prejoinPageEnabled") : false)
                         .build();
                     mJitsiMeetViewReference.getJitsiMeetView().join(options);
                 }
