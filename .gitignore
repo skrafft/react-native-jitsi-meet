@@ -53,3 +53,4 @@ buck-out/
 */fastlane/screenshots
 
 *.jsbundle
+.history
