@@ -37,7 +37,7 @@ android {
 
 repositories {
   maven {
-      url "https://github.com/narvis2/Jitsi-Meet-Custom-View-Example/raw/main/releases"
+      url "https://github.com/narvis2/Jitsi-Meet-Custom-View-Example/raw/android-0.0.1-sdk/releases"
   }
   google()
   mavenCentral()
