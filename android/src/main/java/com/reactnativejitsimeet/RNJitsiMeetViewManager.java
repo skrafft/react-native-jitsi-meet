@@ -16,6 +16,7 @@ import java.util.Map;
 
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 @ReactModule(name = RNJitsiMeetViewManager.REACT_CLASS)
 public class RNJitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> implements JitsiMeetViewListener {
@@ -46,6 +47,7 @@ public class RNJitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> i
             intent.setAction(JitsiMeetOngoingConferenceService.Action.START.getName());
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Log.e("Narvis2", "🦋🦋🦋 JitsiMeetOngoingConferenceService ForegroundService 시작 🦋🦋🦋");
                 mReactContext.startForegroundService(intent);
             } else {
                 mReactContext.startService(intent);
