@@ -53,18 +53,18 @@ public class RNJitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> i
                 "conferenceJoined",
                 event);
 
-        if (mReactContext != null) {
-            Intent intent = new Intent(mReactContext, JitsiMeetOngoingConferenceService.class);
-            intent.setAction(JitsiMeetOngoingConferenceService.Action.START.getName());
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                Log.e("Narvis2", "🦋🦋🦋 JitsiMeetOngoingConferenceService ForegroundService 시작 🦋🦋🦋");
-                mReactContext.startForegroundService(intent);
-
-            } else {
-                mReactContext.startService(intent);
-            }
-        }
+//        if (mReactContext != null) {
+//            Intent intent = new Intent(mReactContext, JitsiMeetOngoingConferenceService.class);
+//            intent.setAction(JitsiMeetOngoingConferenceService.Action.START.getName());
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                Log.e("Narvis2", "🦋🦋🦋 JitsiMeetOngoingConferenceService ForegroundService 시작 🦋🦋🦋");
+//                mReactContext.startForegroundService(intent);
+//
+//            } else {
+//                mReactContext.startService(intent);
+//            }
+//        }
     }
 
     public void onConferenceTerminated(Map<String, Object> data) {
