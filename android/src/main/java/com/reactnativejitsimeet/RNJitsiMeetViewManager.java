@@ -2,7 +2,6 @@ package com.reactnativejitsimeet;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.SimpleViewManager;
@@ -10,11 +9,14 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.facebook.react.module.annotations.ReactModule;
 
+import org.jitsi.meet.sdk.JitsiMeetOngoingConferenceService;
 import org.jitsi.meet.sdk.JitsiMeetViewListener;
 
 import java.util.Map;
 
-import static java.security.AccessController.getContext;
+import android.content.Intent;
+import android.os.Build;
+import android.util.Log;
 
 @ReactModule(name = RNJitsiMeetViewManager.REACT_CLASS)
 public class RNJitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> implements JitsiMeetViewListener {
@@ -39,6 +41,19 @@ public class RNJitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> i
             view.setListener(this);
             mJitsiMeetViewReference.setJitsiMeetView(view);
         }
+
+        if (mReactContext != null) {
+            Intent intent = new Intent(mReactContext, JitsiMeetOngoingConferenceService.class);
+            intent.setAction(JitsiMeetOngoingConferenceService.Action.START.getName());
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Log.e("Narvis2", "🦋🦋🦋 JitsiMeetOngoingConferenceService ForegroundService 시작 🦋🦋🦋");
+                mReactContext.startForegroundService(intent);
+            } else {
+                mReactContext.startService(intent);
+            }
+        }
+
         return mJitsiMeetViewReference.getJitsiMeetView();
     }
 
