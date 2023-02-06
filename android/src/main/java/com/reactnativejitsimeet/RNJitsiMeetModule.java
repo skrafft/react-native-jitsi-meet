@@ -1,24 +1,36 @@
 package com.reactnativejitsimeet;
 
-import android.util.Log;
-import java.net.URL;
-import java.net.MalformedURLException;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.UiThreadUtil;
-import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
+import com.facebook.react.bridge.ReadableType;
+import com.facebook.react.module.annotations.ReactModule;
+
+import org.jitsi.meet.sdk.BroadcastEvent;
+import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
+import org.jitsi.meet.sdk.JitsiMeetUserInfo;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 @ReactModule(name = RNJitsiMeetModule.MODULE_NAME)
 public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
     public static final String MODULE_NAME = "RNJitsiMeetModule";
-    private IRNJitsiMeetViewReference mJitsiMeetViewReference;
 
-    public RNJitsiMeetModule(ReactApplicationContext reactContext, IRNJitsiMeetViewReference jitsiMeetViewReference) {
+    private BroadcastReceiver onConferenceTerminatedReceiver;
+
+    public RNJitsiMeetModule(ReactApplicationContext reactContext) {
         super(reactContext);
-        mJitsiMeetViewReference = jitsiMeetViewReference;
     }
 
     @Override
@@ -26,112 +38,141 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
         return MODULE_NAME;
     }
 
+    @Deprecated
     @ReactMethod
-    public void initialize() {
-        Log.d("JitsiMeet", "Initialize is deprecated in v2");
+    public void hangUp() {
+        Intent hangUpBroadcastIntent = new Intent("org.jitsi.meet.HANG_UP");
+        LocalBroadcastManager.getInstance(getReactApplicationContext()).sendBroadcast(hangUpBroadcastIntent);
     }
 
     @ReactMethod
-    public void call(String url, ReadableMap userInfo, ReadableMap meetOptions, ReadableMap meetFeatureFlags) {
-        UiThreadUtil.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if (mJitsiMeetViewReference.getJitsiMeetView() != null) {
-                    RNJitsiMeetUserInfo _userInfo = new RNJitsiMeetUserInfo();
-                    if (userInfo != null) {
-                        if (userInfo.hasKey("displayName")) {
-                            _userInfo.setDisplayName(userInfo.getString("displayName"));
-                          }
-                          if (userInfo.hasKey("email")) {
-                            _userInfo.setEmail(userInfo.getString("email"));
-                          }
-                          if (userInfo.hasKey("avatar")) {
-                            String avatarURL = userInfo.getString("avatar");
-                            try {
-                                _userInfo.setAvatar(new URL(avatarURL));
-                            } catch (MalformedURLException e) {
-                            }
-                          }
+    public void sendActions(ReadableMap actions) {
+        ReadableMapKeySetIterator actionsIterator = actions.keySetIterator();
+        while (actionsIterator.hasNextKey()) {
+            String key = actionsIterator.nextKey();
+            Intent genericBroadcastIntent = new Intent("org.jitsi.meet." + key);
+            if (!actions.isNull(key)) {
+                ReadableMap valueMap = actions.getMap(key);
+                ReadableMapKeySetIterator valueIterator = valueMap.keySetIterator();
+                while (valueIterator.hasNextKey()) {
+                    String valKey = valueIterator.nextKey();
+                    ReadableType type = valueMap.getType(valKey);
+                    switch (type) {
+                        case String:
+                            String stringVal = valueMap.getString(valKey);
+                            genericBroadcastIntent.putExtra(valKey, stringVal);
+                            break;
+                        case Boolean:
+                            Boolean booleanVal = valueMap.getBoolean(valKey);
+                            genericBroadcastIntent.putExtra(valKey, booleanVal);
+                            break;
+
+                        default:
+                            throw new IllegalArgumentException("Could not read object with key: " + key);
                     }
-                    RNJitsiMeetConferenceOptions options = new RNJitsiMeetConferenceOptions.Builder()
-                        .setRoom(url)
-                        .setToken(meetOptions.hasKey("token") ? meetOptions.getString("token") : "")
-                        .setSubject(meetOptions.hasKey("subject") ? meetOptions.getString("subject") : "")
-                        .setAudioMuted(meetOptions.hasKey("audioMuted") ? meetOptions.getBoolean("audioMuted") : false)
-                        .setAudioOnly(meetOptions.hasKey("audioOnly") ? meetOptions.getBoolean("audioOnly") : false)
-                        .setVideoMuted(meetOptions.hasKey("videoMuted") ? meetOptions.getBoolean("videoMuted") : false)
-                        .setUserInfo(_userInfo)
-                        .setFeatureFlag("add-people.enabled", meetFeatureFlags.hasKey("addPeopleEnabled") ? meetFeatureFlags.getBoolean("addPeopleEnabled") : true)
-                        .setFeatureFlag("calendar.enabled", meetFeatureFlags.hasKey("calendarEnabled") ?meetFeatureFlags.getBoolean("calendarEnabled") : true)
-                        .setFeatureFlag("call-integration.enabled", meetFeatureFlags.hasKey("callIntegrationEnabled") ?meetFeatureFlags.getBoolean("callIntegrationEnabled") : true)
-                        .setFeatureFlag("chat.enabled", meetFeatureFlags.hasKey("chatEnabled") ?meetFeatureFlags.getBoolean("chatEnabled") : true)
-                        .setFeatureFlag("close-captions.enabled", meetFeatureFlags.hasKey("closeCaptionsEnabled") ?meetFeatureFlags.getBoolean("closeCaptionsEnabled") : true)
-                        .setFeatureFlag("invite.enabled", meetFeatureFlags.hasKey("inviteEnabled") ?meetFeatureFlags.getBoolean("inviteEnabled") : true)
-                        .setFeatureFlag("android.screensharing.enabled", meetFeatureFlags.hasKey("androidScreenSharingEnabled") ?meetFeatureFlags.getBoolean("androidScreenSharingEnabled") : true)
-                        .setFeatureFlag("live-streaming.enabled", meetFeatureFlags.hasKey("liveStreamingEnabled") ?meetFeatureFlags.getBoolean("liveStreamingEnabled") : true)
-                        .setFeatureFlag("meeting-name.enabled", meetFeatureFlags.hasKey("meetingNameEnabled") ?meetFeatureFlags.getBoolean("meetingNameEnabled") : true)
-                        .setFeatureFlag("meeting-password.enabled", meetFeatureFlags.hasKey("meetingPasswordEnabled") ?meetFeatureFlags.getBoolean("meetingPasswordEnabled") : true)
-                        .setFeatureFlag("pip.enabled", meetFeatureFlags.hasKey("pipEnabled") ?meetFeatureFlags.getBoolean("pipEnabled") : true)
-                        .setFeatureFlag("kick-out.enabled", meetFeatureFlags.hasKey("kickOutEnabled") ?meetFeatureFlags.getBoolean("kickOutEnabled") : true)
-                        .setFeatureFlag("conference-timer.enabled", meetFeatureFlags.hasKey("conferenceTimerEnabled") ?meetFeatureFlags.getBoolean("conferenceTimerEnabled") : true)
-                        .setFeatureFlag("video-share.enabled", meetFeatureFlags.hasKey("videoShareEnabled") ?meetFeatureFlags.getBoolean("videoShareEnabled") : true)
-                        .setFeatureFlag("recording.enabled", meetFeatureFlags.hasKey("recordingEnabled") ?meetFeatureFlags.getBoolean("recordingEnabled") : true)
-                        .setFeatureFlag("reactions.enabled", meetFeatureFlags.hasKey("reactionsEnabled") ?meetFeatureFlags.getBoolean("reactionsEnabled") : true)
-                        .setFeatureFlag("raise-hand.enabled", meetFeatureFlags.hasKey("raiseHandEnabled") ?meetFeatureFlags.getBoolean("raiseHandEnabled") : true)
-                        .setFeatureFlag("tile-view.enabled", meetFeatureFlags.hasKey("tileViewEnabled") ?meetFeatureFlags.getBoolean("tileViewEnabled") : true)
-                        .setFeatureFlag("toolbox.alwaysVisible", meetFeatureFlags.hasKey("toolboxAlwaysVisible") ?meetFeatureFlags.getBoolean("toolboxAlwaysVisible") : false)
-                        .setFeatureFlag("toolbox.enabled", meetFeatureFlags.hasKey("toolboxEnabled") ?meetFeatureFlags.getBoolean("toolboxEnabled") : true)
-                        .setFeatureFlag("welcomepage.enabled", meetFeatureFlags.hasKey("welcomePageEnabled") ?meetFeatureFlags.getBoolean("welcomePageEnabled") : false)
-                        .setFeatureFlag("prejoinpage.enabled", meetFeatureFlags.hasKey("prejoinPageEnabled") ?meetFeatureFlags.getBoolean("prejoinPageEnabled") : false)
-                        .build();
-                    mJitsiMeetViewReference.getJitsiMeetView().join(options);
                 }
             }
-        });
+
+            LocalBroadcastManager.getInstance(getReactApplicationContext()).sendBroadcast(genericBroadcastIntent);
+        }
     }
 
     @ReactMethod
-    public void audioCall(String url, ReadableMap userInfo) {
-        UiThreadUtil.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if (mJitsiMeetViewReference.getJitsiMeetView() != null) {
-                    RNJitsiMeetUserInfo _userInfo = new RNJitsiMeetUserInfo();
-                    if (userInfo != null) {
-                        if (userInfo.hasKey("displayName")) {
-                            _userInfo.setDisplayName(userInfo.getString("displayName"));
-                          }
-                          if (userInfo.hasKey("email")) {
-                            _userInfo.setEmail(userInfo.getString("email"));
-                          }
-                          if (userInfo.hasKey("avatar")) {
-                            String avatarURL = userInfo.getString("avatar");
-                            try {
-                                _userInfo.setAvatar(new URL(avatarURL));
-                            } catch (MalformedURLException e) {
-                            }
-                          }
+    public void launchJitsiMeetView(ReadableMap options, Promise onConferenceTerminated) {
+        JitsiMeetConferenceOptions.Builder builder = new JitsiMeetConferenceOptions.Builder();
+
+        if (options.hasKey("room")) {
+            builder.setRoom(options.getString("room"));
+        }
+
+        try {
+            builder.setServerURL(new URL(options.hasKey("serverUrl") ? options.getString("serverUrl") : "https://meet.jit.si"));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Server url invalid");
+        }
+
+        if (options.hasKey("userInfo")) {
+            ReadableMap userInfoMap = options.getMap("userInfo");
+
+            if (userInfoMap != null) {
+                JitsiMeetUserInfo userInfo = new JitsiMeetUserInfo();
+
+                if (userInfoMap.hasKey("displayName")) {
+                    userInfo.setDisplayName(userInfoMap.getString("displayName"));
+                }
+
+                if (userInfoMap.hasKey("email")) {
+                    userInfo.setEmail(userInfoMap.getString("email"));
+                }
+
+                if (userInfoMap.hasKey("avatar")) {
+                    try {
+                        userInfo.setAvatar(new URL(userInfoMap.getString("avatar")));
+                    } catch (MalformedURLException e) {
+                        throw new RuntimeException("Avatar url invalid");
                     }
-                    RNJitsiMeetConferenceOptions options = new RNJitsiMeetConferenceOptions.Builder()
-                            .setRoom(url)
-                            .setAudioOnly(true)
-                            .setUserInfo(_userInfo)
-                            .build();
-                    mJitsiMeetViewReference.getJitsiMeetView().join(options);
                 }
+
+                builder.setUserInfo(userInfo);
             }
-        });
+        }
+
+        if (options.hasKey("token")) {
+            builder.setToken(options.getString("token"));
+        }
+
+        // Set built-in config overrides
+        if (options.hasKey("subject")) {
+            builder.setSubject(options.getString("subject"));
+        }
+
+        if (options.hasKey("audioOnly")) {
+            builder.setAudioOnly(options.getBoolean("audioOnly"));
+        }
+
+        if (options.hasKey("audioMuted")) {
+            builder.setAudioMuted(options.getBoolean("audioMuted"));
+        }
+
+        if (options.hasKey("videoMuted")) {
+            builder.setVideoMuted(options.getBoolean("videoMuted"));
+        }
+
+        // Set the feature flags
+        if (options.hasKey("featureFlags")) {
+            ReadableMap featureFlags = options.getMap("featureFlags");
+            ReadableMapKeySetIterator iterator = featureFlags.keySetIterator();
+            while (iterator.hasNextKey()) {
+                String flag = iterator.nextKey();
+                Boolean value = featureFlags.getBoolean(flag);
+                builder.setFeatureFlag(flag, value);
+            }
+        }
+
+        RNJitsiMeetActivityExtended.launchExtended(getReactApplicationContext(), builder.build());
+
+        this.registerOnConferenceTerminatedListener(onConferenceTerminated);
     }
 
     @ReactMethod
-    public void endCall() {
-        UiThreadUtil.runOnUiThread(new Runnable() {
+    public void launch(ReadableMap options, Promise onConferenceTerminated) {
+        launchJitsiMeetView(options, onConferenceTerminated);
+    }
+
+    private void registerOnConferenceTerminatedListener(Promise onConferenceTerminated) {
+        onConferenceTerminatedReceiver = new BroadcastReceiver() {
             @Override
-            public void run() {
-                if (mJitsiMeetViewReference.getJitsiMeetView() != null) {
-                    mJitsiMeetViewReference.getJitsiMeetView().leave();
-                }
+            public void onReceive(Context context, Intent intent) {
+                BroadcastEvent event = new BroadcastEvent(intent);
+
+                onConferenceTerminated.resolve(null);
+
+                LocalBroadcastManager.getInstance(getReactApplicationContext()).unregisterReceiver(onConferenceTerminatedReceiver);
             }
-        });
+        };
+
+        IntentFilter intentFilter = new IntentFilter(BroadcastEvent.Type.CONFERENCE_TERMINATED.getAction());
+
+        LocalBroadcastManager.getInstance(getReactApplicationContext()).registerReceiver(this.onConferenceTerminatedReceiver, intentFilter);
     }
 }

@@ -16,7 +16,6 @@ import org.jitsi.meet.sdk.log.JitsiMeetLogger;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-
 public class RNJitsiMeetView extends BaseReactView<JitsiMeetViewListener>
         implements RNOngoingConferenceTracker.OngoingConferenceListener {
 
@@ -72,7 +71,7 @@ public class RNJitsiMeetView extends BaseReactView<JitsiMeetViewListener>
             } else if (valueType.contentEquals("String")) {
                 result.putString(key, (String)bValue);
             } else if (valueType.contentEquals("Bundle")) {
-                result.putBundle(key, mergeProps((Bundle)aValue, (Bundle)bValue));
+                result.putBundle(key, mergeProps((Bundle) aValue, (Bundle) bValue));
             } else {
                 throw new RuntimeException("Unsupported type: " + valueType);
             }
@@ -168,5 +167,11 @@ public class RNJitsiMeetView extends BaseReactView<JitsiMeetViewListener>
     @Override
     protected void onExternalAPIEvent(String name, ReadableMap data) {
         onExternalAPIEvent(LISTENER_METHODS, name, data);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        dispose();
+        super.onDetachedFromWindow();
     }
 }
