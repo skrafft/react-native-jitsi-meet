@@ -1,43 +1,30 @@
 package com.reactnativejitsimeet;
 
+import androidx.annotation.NonNull;
+
 import com.facebook.react.ReactPackage;
-import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-public class RNJitsiMeetPackage implements ReactPackage, IRNJitsiMeetViewReference {
+public class RNJitsiMeetPackage implements ReactPackage {
 
-    private RNJitsiMeetView mJitsiMeetView = null;
-
-    public void setJitsiMeetView(RNJitsiMeetView jitsiMeetView) {
-        mJitsiMeetView = jitsiMeetView;
-    }
-
-    public RNJitsiMeetView getJitsiMeetView() {
-        return mJitsiMeetView;
-    }
-
+    @NonNull
     @Override
-    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+    public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new RNJitsiMeetModule(reactContext, this));
+        modules.add(new RNJitsiMeetModule(reactContext));
         return modules;
     }
 
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-        return Collections.emptyList();
-    }
-
+    @NonNull
     @Override
-    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Arrays.<ViewManager>asList(
-                new RNJitsiMeetViewManager(reactContext, this)
-        );
+    public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
+        List<ViewManager> modules = new ArrayList<>();
+        modules.add(new RNJitsiMeetViewManager(reactContext));
+        return modules;
     }
 }
