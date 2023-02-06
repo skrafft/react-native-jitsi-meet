@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		96EBEF4E2115B4A500BFE51E /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96EBEF4C2115B4A400BFE51E /* WebRTC.framework */; };
-		96EBEF4F2115B4A500BFE51E /* JitsiMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96EBEF4D2115B4A500BFE51E /* JitsiMeet.framework */; };
-		96EBF0042119CADA00BFE51E /* JitsiMeetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EBF0032119CADA00BFE51E /* JitsiMeetViewController.m */; };
-		96EBF0062119CCFB00BFE51E /* RNJitsiMeetNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EBF0052119CCFB00BFE51E /* RNJitsiMeetNavigator.m */; };
+		FD2F56412990F13500E3256E /* JitsiMeet.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2F56402990F13500E3256E /* JitsiMeet.m */; };
+		FD2F56442990F18300E3256E /* JitsiMeet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2F56432990F18300E3256E /* JitsiMeet.swift */; };
+		FD2F56462990F31A00E3256E /* JitsiMeetUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2F56452990F31A00E3256E /* JitsiMeetUtil.swift */; };
+		FD2F56482990F38000E3256E /* RNJitsiMeetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2F56472990F38000E3256E /* RNJitsiMeetView.swift */; };
+		FD2F564A2990F3A400E3256E /* JitsiMeetViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2F56492990F3A400E3256E /* JitsiMeetViewManager.m */; };
+		FD2F564C2990F3C800E3256E /* JitsiMeetViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2F564B2990F3C800E3256E /* JitsiMeetViewManager.swift */; };
+		FD2F564E2990F3DE00E3256E /* JitsiMeetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2F564D2990F3DE00E3256E /* JitsiMeetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,13 +30,14 @@
 
 /* Begin PBXFileReference section */
 		014A3B5C1C6CF33500B6D375 /* libRNJitsiMeet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNJitsiMeet.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		96EBEF4C2115B4A400BFE51E /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
-		96EBEF4D2115B4A500BFE51E /* JitsiMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JitsiMeet.framework; sourceTree = "<group>"; };
-		96EBF0012119CA2500BFE51E /* JitsiMeet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JitsiMeet.storyboard; sourceTree = "<group>"; };
-		96EBF0022119CADA00BFE51E /* JitsiMeetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JitsiMeetViewController.h; sourceTree = "<group>"; };
-		96EBF0032119CADA00BFE51E /* JitsiMeetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JitsiMeetViewController.m; sourceTree = "<group>"; };
-		96EBF0052119CCFB00BFE51E /* RNJitsiMeetNavigator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNJitsiMeetNavigator.m; sourceTree = "<group>"; };
-		96EBF0072119CD7000BFE51E /* RNJitsiMeetNavigator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNJitsiMeetNavigator.h; sourceTree = "<group>"; };
+		FD2F56402990F13500E3256E /* JitsiMeet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JitsiMeet.m; sourceTree = "<group>"; };
+		FD2F56422990F18200E3256E /* RNJitsiMeet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNJitsiMeet-Bridging-Header.h"; sourceTree = "<group>"; };
+		FD2F56432990F18300E3256E /* JitsiMeet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JitsiMeet.swift; sourceTree = "<group>"; };
+		FD2F56452990F31A00E3256E /* JitsiMeetUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JitsiMeetUtil.swift; sourceTree = "<group>"; };
+		FD2F56472990F38000E3256E /* RNJitsiMeetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNJitsiMeetView.swift; sourceTree = "<group>"; };
+		FD2F56492990F3A400E3256E /* JitsiMeetViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JitsiMeetViewManager.m; sourceTree = "<group>"; };
+		FD2F564B2990F3C800E3256E /* JitsiMeetViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JitsiMeetViewManager.swift; sourceTree = "<group>"; };
+		FD2F564D2990F3DE00E3256E /* JitsiMeetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JitsiMeetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,8 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96EBEF4E2115B4A500BFE51E /* WebRTC.framework in Frameworks */,
-				96EBEF4F2115B4A500BFE51E /* JitsiMeet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,13 +54,14 @@
 		014A3B531C6CF33500B6D375 = {
 			isa = PBXGroup;
 			children = (
-				96EBF0072119CD7000BFE51E /* RNJitsiMeetNavigator.h */,
-				96EBF0052119CCFB00BFE51E /* RNJitsiMeetNavigator.m */,
-				96EBF0022119CADA00BFE51E /* JitsiMeetViewController.h */,
-				96EBF0032119CADA00BFE51E /* JitsiMeetViewController.m */,
-				96EBF0012119CA2500BFE51E /* JitsiMeet.storyboard */,
-				96EBEF4D2115B4A500BFE51E /* JitsiMeet.framework */,
-				96EBEF4C2115B4A400BFE51E /* WebRTC.framework */,
+				FD2F56422990F18200E3256E /* RNJitsiMeet-Bridging-Header.h */,
+				FD2F56402990F13500E3256E /* JitsiMeet.m */,
+				FD2F56492990F3A400E3256E /* JitsiMeetViewManager.m */,
+				FD2F56432990F18300E3256E /* JitsiMeet.swift */,
+				FD2F56452990F31A00E3256E /* JitsiMeetUtil.swift */,
+				FD2F564D2990F3DE00E3256E /* JitsiMeetViewController.swift */,
+				FD2F564B2990F3C800E3256E /* JitsiMeetViewManager.swift */,
+				FD2F56472990F38000E3256E /* RNJitsiMeetView.swift */,
 				014A3B5D1C6CF33500B6D375 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +105,7 @@
 				TargetAttributes = {
 					014A3B5B1C6CF33500B6D375 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -110,6 +114,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 014A3B531C6CF33500B6D375;
@@ -127,8 +132,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96EBF0042119CADA00BFE51E /* JitsiMeetViewController.m in Sources */,
-				96EBF0062119CCFB00BFE51E /* RNJitsiMeetNavigator.m in Sources */,
+				FD2F564E2990F3DE00E3256E /* JitsiMeetViewController.swift in Sources */,
+				FD2F56442990F18300E3256E /* JitsiMeet.swift in Sources */,
+				FD2F56482990F38000E3256E /* RNJitsiMeetView.swift in Sources */,
+				FD2F56462990F31A00E3256E /* JitsiMeetUtil.swift in Sources */,
+				FD2F564C2990F3C800E3256E /* JitsiMeetViewManager.swift in Sources */,
+				FD2F56412990F13500E3256E /* JitsiMeet.m in Sources */,
+				FD2F564A2990F3A400E3256E /* JitsiMeetViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +164,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -196,7 +206,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -220,6 +230,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -229,9 +240,13 @@
 					"$(SRCROOT)/../../node_modules/react-native/React/**",
 					"$(SRCROOT)/../../node_modules/react-native/Libraries/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNJitsiMeet-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -242,6 +257,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -252,9 +268,12 @@
 					"$(SRCROOT)/../../node_modules/react-native/Libraries/**",
 				);
 				LDFLAGS = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNJitsiMeet-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
