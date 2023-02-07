@@ -1,7 +1,7 @@
 {
   "name": "react-native-jitsi-meet",
-  "description": "Jitsi Meet SDK wrapper for React Native.",
-  "version": "2.3.1",
+  "description": "Custom Jitsi Meet SDK wrapper for React Native.",
+  "version": "0.0.4",
   "author": {
     "name": "Sébastien Krafft",
     "email": "skrafft@gmail.com"
@@ -31,6 +31,6 @@
   "nativePackage": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/skrafft/react-native-jitsi-meet.git"
+    "url": "https://github.com/narvis2/react-native-jitsi-meet-example.git"
   }
 }
