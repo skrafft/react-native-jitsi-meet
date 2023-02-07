@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "12.0"
 
   s.source       = { :git => "https://github.com/yeongil4764/jitsi-meet-ios-sdk-test.git", :tag => "v#{s.version}" }
-  s.source_files  = "ios/**/*.{h,m}"
+  s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency 'React'
   s.dependency 'JitsiMeetSDK', '0.0.4'
