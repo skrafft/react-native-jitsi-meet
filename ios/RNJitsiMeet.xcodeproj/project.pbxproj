@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FD2F56412990F13500E3256E /* JitsiMeet.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2F56402990F13500E3256E /* JitsiMeet.m */; };
 		FD2F56442990F18300E3256E /* JitsiMeet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2F56432990F18300E3256E /* JitsiMeet.swift */; };
 		FD2F56462990F31A00E3256E /* JitsiMeetUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2F56452990F31A00E3256E /* JitsiMeetUtil.swift */; };
 		FD2F56482990F38000E3256E /* RNJitsiMeetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2F56472990F38000E3256E /* RNJitsiMeetView.swift */; };
@@ -137,7 +136,6 @@
 				FD2F56482990F38000E3256E /* RNJitsiMeetView.swift in Sources */,
 				FD2F56462990F31A00E3256E /* JitsiMeetUtil.swift in Sources */,
 				FD2F564C2990F3C800E3256E /* JitsiMeetViewManager.swift in Sources */,
-				FD2F56412990F13500E3256E /* JitsiMeet.m in Sources */,
 				FD2F564A2990F3A400E3256E /* JitsiMeetViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
