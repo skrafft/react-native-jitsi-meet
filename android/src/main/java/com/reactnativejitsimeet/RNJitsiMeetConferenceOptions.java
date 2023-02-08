@@ -33,6 +33,9 @@ public class RNJitsiMeetConferenceOptions implements Parcelable {
      */
     private String token;
 
+    // ✅ Wehago-Meet Conference Room Token
+    private String roomToken;
+
     /**
      * Color scheme override, see: https://github.com/jitsi/jitsi-meet/blob/dbedee5e22e5dcf9c92db96ef5bb3c9982fc526d/react/features/base/color-scheme/defaultScheme.js
      */
@@ -64,6 +67,8 @@ public class RNJitsiMeetConferenceOptions implements Parcelable {
         private String room;
         private String subject;
         private String token;
+
+        private String roomToken;
 
         private Bundle colorScheme;
         private Bundle featureFlags;
@@ -118,6 +123,12 @@ public class RNJitsiMeetConferenceOptions implements Parcelable {
          */
         public Builder setToken(String token) {
             this.token = token;
+
+            return this;
+        }
+
+        public Builder setRoomToken(String roomToken) {
+            this.roomToken = roomToken;
 
             return this;
         }
@@ -217,6 +228,9 @@ public class RNJitsiMeetConferenceOptions implements Parcelable {
             options.room = this.room;
             options.subject = this.subject;
             options.token = this.token;
+
+            options.roomToken = this.roomToken;
+
             options.colorScheme = this.colorScheme;
             options.featureFlags = this.featureFlags;
             options.audioMuted = this.audioMuted;
@@ -235,6 +249,9 @@ public class RNJitsiMeetConferenceOptions implements Parcelable {
         room = in.readString();
         subject = in.readString();
         token = in.readString();
+
+        roomToken = in.readString();
+
         colorScheme = in.readBundle();
         featureFlags = in.readBundle();
         userInfo = new RNJitsiMeetUserInfo(in.readBundle());
@@ -323,6 +340,7 @@ public class RNJitsiMeetConferenceOptions implements Parcelable {
         dest.writeString(room);
         dest.writeString(subject);
         dest.writeString(token);
+        dest.writeString(roomToken);
         dest.writeBundle(colorScheme);
         dest.writeBundle(featureFlags);
         dest.writeBundle(userInfo != null ? userInfo.asBundle() : new Bundle());

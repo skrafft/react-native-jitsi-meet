@@ -29,7 +29,7 @@ import java.util.Map;
 
 @ReactModule(name = RNJitsiMeetViewManager.REACT_CLASS)
 public class RNJitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> {
-    public static final String REACT_CLASS = "RNJitsiMeetView";
+    public static final String REACT_CLASS = "JitsiMeetView";
 
     private final ReactApplicationContext reactApplicationContext;
     private RNJitsiMeetView jitsiMeetView;
