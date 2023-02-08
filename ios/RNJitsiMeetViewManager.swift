@@ -2,8 +2,8 @@ import UIKit
 import React
 import JitsiMeetSDK
 
-@objc(JitsiMeetViewManager)
-class JitsiMeetViewManager: RCTViewManager {
+@objc(RNJitsiMeetViewManager)
+class RNJitsiMeetViewManager: RCTViewManager {
   override func view() -> UIView! {
     return RNJitsiMeetView()
   }
