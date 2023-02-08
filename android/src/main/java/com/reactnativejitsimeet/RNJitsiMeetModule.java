@@ -25,7 +25,7 @@ import java.net.URL;
 
 @ReactModule(name = RNJitsiMeetModule.MODULE_NAME)
 public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
-    public static final String MODULE_NAME = "RNJitsiMeetModule";
+    public static final String MODULE_NAME = "JitsiMeetModule";
 
     private BroadcastReceiver onConferenceTerminatedReceiver;
 
@@ -77,6 +77,11 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
         }
     }
 
+    /**
+     * ✅ Wehago-Meet-Renewal 에서 해당 메서드로 화상회의를 시작함
+     * 해당 메서드를 호출하면 JitsiMeetActivity 를 startActivity 를 통해 새로운 Activity 로 시작함
+     * 값이 잘 들어오는 지는 Wehago-Meet-Renewal 에서 Brake Point 를 걸어 Debug 모드 실행하면됨
+     */
     @ReactMethod
     public void launchJitsiMeetView(ReadableMap options, Promise onConferenceTerminated) {
         JitsiMeetConferenceOptions.Builder builder = new JitsiMeetConferenceOptions.Builder();
@@ -119,6 +124,10 @@ public class RNJitsiMeetModule extends ReactContextBaseJavaModule {
 
         if (options.hasKey("token")) {
             builder.setToken(options.getString("token"));
+        }
+
+        if (options.hasKey("roomToken")) {
+            builder.setRoomToken(options.getString("roomToken"));
         }
 
         // Set built-in config overrides
