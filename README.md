@@ -83,7 +83,7 @@ const VideoCall = () => {
         toolboxEnabled: true,
         welcomePageEnabled: false,
       }
-      JitsiMeet.call(url, userInfo, options. meetFeatureFlags);
+      JitsiMeet.call(url, userInfo, options, meetFeatureFlags);
       /* You can also use JitsiMeet.audioCall(url) for audio only call */
       /* You can programmatically end the call with JitsiMeet.endCall() */
     }, 1000);
