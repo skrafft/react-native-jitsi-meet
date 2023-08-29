@@ -1,3 +1,6 @@
+| :exclamation:  This library is now deprecated since the jitsi Team published [an official react native sdk](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-react-native-sdk/)   |
+|-----------------------------------------|
+
 # react-native-jitsi-meet
 React native wrapper for Jitsi Meet SDK
 
